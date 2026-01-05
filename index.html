@@ -247,32 +247,36 @@
     </div>
 
    <script>
+    // رابط الويب هوك الخاص بك
     const webhookURL = "https://discord.com/api/webhooks/1457853046112387227/GAcPWNKCxhnpCUV4D3zSSDms5EefvO9EqRHI80HdK2lKhCglQMEECBYCcD2RvSHMYg45";
 
+    // فتح نافذة الطلب
     function openOrderModal(name) {
         document.getElementById('targetRankName').innerText = name;
         document.getElementById('orderModal').style.display = 'flex';
     }
 
-    function closeModal() {
+    // إغلاق نافذة الطلب
+    function closeOrderModal() {
         document.getElementById('orderModal').style.display = 'none';
     }
 
+    // إرسال البيانات للديسكورد
     async function submitOrder() {
         const mcName = document.getElementById('mc-name').value;
         const dcName = document.getElementById('dc-name').value;
-        const payment = document.getElementById('payment-method')?.value || "غير محدد";
+        const payment = document.getElementById('payment-method')?.value || "فودافون كاش";
         const rank = document.getElementById('targetRankName').innerText;
 
         if (!mcName || !dcName) {
-            alert("من فضلك أدخل جميع البيانات (الاسم والديسكورد)!");
+            alert("⚠️ من فضلك أدخل جميع البيانات (اسم ماينكرافت والديسكورد)!");
             return;
         }
 
         const contents = {
-            username: "Survival King Store",
+            username: "Store Bot",
             embeds: [{
-                title: "🛒 طلب شراء رتبة جديد!",
+                title: "🛒 طلب شراء جديد!",
                 color: 15844367,
                 fields: [
                     { name: "👑 الرتبة", value: rank, inline: true },
@@ -292,8 +296,8 @@
             });
 
             if (response.ok) {
-alert("✅ تم إرسال طلبك بنجاح! الإدارة هتتواصل معاك على الديسكورد قريباً.");                
-                document.getElementById('orderModal').style.display = 'none';
+                alert("✅ تم إرسال طلبك بنجاح! الإدارة هتتواصل معاك على الديسكورد قريباً.");
+                closeOrderModal();
             } else {
                 alert("❌ فشل الإرسال، تأكد من إعدادات الـ Webhook.");
             }
@@ -302,24 +306,6 @@ alert("✅ تم إرسال طلبك بنجاح! الإدارة هتتواصل م
         }
     }
 </script>
-    try {
-        const response = await fetch(webhookURL, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(contents)
-        });
-
-        if (response.ok) {
-            alert("✅ تم إرسال طلبك للديسكورد بنجاح! سيتم التواصل معك قريباً.");
-            closeOrderModal();
-        } else {
-            alert("❌ حدث خطأ في إرسال الطلب، تأكد من إعدادات الـ Webhook.");
-        }
-    } catch (e) {
-        alert("❌ فشل الاتصال، تأكد من وجود إنترنت.");
-    }
-}
-
         const navItems = document.querySelectorAll('.nav-item');
         navItems.forEach(item => {
             item.addEventListener('click', function() {
@@ -331,4 +317,3 @@ alert("✅ تم إرسال طلبك بنجاح! الإدارة هتتواصل م
 <script src="minecraft.js"></script>
 </body>
 </html>
-
