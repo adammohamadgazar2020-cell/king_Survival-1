@@ -34,7 +34,7 @@ async function submitOrder() {
         });
 
         if (response.ok) {
-            alert("✅ الطلب وصل الديسكورد! شيك على السيرفر الآن.");
+alert("✅ تم إرسال طلبك بنجاح! الإدارة هتتواصل معاك على الديسكورد قريباً.");                
             closeOrderModal();
         } else {
             alert("❌ حدث خطأ في إرسال الطلب.");
@@ -51,4 +51,5 @@ function openOrderModal(name) {
 }
 function closeOrderModal() {
     document.getElementById('orderModal').style.display = 'none';
+
 }
